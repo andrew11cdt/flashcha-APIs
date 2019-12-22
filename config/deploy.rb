@@ -70,7 +70,7 @@ end
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
-append :linked_files, "config/master.key"
+append :linked_files, "config/credentials/production.key"
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
