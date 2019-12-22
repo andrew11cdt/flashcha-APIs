@@ -71,33 +71,18 @@ GEM
       sshkit (>= 1.9.0)
     capistrano-bundler (1.6.0)
       capistrano (~> 3.1)
-    capistrano-db-tasks (0.6)
-      capistrano (>= 3.0.0)
-    capistrano-passenger (0.2.0)
-      capistrano (~> 3.0)
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-rails-collection (0.1.0)
-      capistrano-rails (~> 1.1)
-    capistrano-rails-console (2.3.0)
-      capistrano (>= 3.5.0, < 4.0.0)
-      sshkit-interactive (~> 0.3.0)
-    capistrano-rails-tail-log (0.1.0)
-      capistrano (>= 3.0)
-      capistrano-rails
-    capistrano-rvm (0.1.2)
-      capistrano (~> 3.0)
-      sshkit (~> 1.2)
-    capistrano-secrets-yml (1.2.1)
-      capistrano (>= 3.10)
-      sshkit (>= 1.17.0)
-    capistrano-sidekiq (1.0.3)
-      capistrano (>= 3.9.0)
-      sidekiq (>= 3.4, < 6.0)
+    capistrano-rbenv (2.1.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.3)
+    capistrano3-puma (4.0.0)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (~> 4.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
-    connection_pool (2.2.2)
     crass (1.0.5)
     database_cleaner (1.7.0)
     database_rewinder (0.9.1)
@@ -146,8 +131,6 @@ GEM
     puma (4.3.1)
       nio4r (~> 2.0)
     rack (2.0.8)
-    rack-protection (2.0.7)
-      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.2.1)
@@ -181,7 +164,6 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    redis (4.1.3)
     rspec-core (3.9.0)
       rspec-support (~> 3.9.0)
     rspec-expectations (3.9.0)
@@ -208,11 +190,6 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.7)
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
-    sidekiq (5.2.7)
-      connection_pool (~> 2.2, >= 2.2.2)
-      rack (>= 1.5.0)
-      rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -227,8 +204,6 @@ GEM
     sshkit (1.20.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    sshkit-interactive (0.3.0)
-      sshkit (~> 1.12)
     thor (1.0.1)
     thread_safe (0.3.6)
     tzinfo (1.2.5)
@@ -248,15 +223,9 @@ DEPENDENCIES
   byebug
   capistrano
   capistrano-bundler
-  capistrano-db-tasks
-  capistrano-passenger
   capistrano-rails
-  capistrano-rails-collection
-  capistrano-rails-console
-  capistrano-rails-tail-log
-  capistrano-rvm
-  capistrano-secrets-yml
-  capistrano-sidekiq
+  capistrano-rbenv
+  capistrano3-puma
   database_cleaner
   database_rewinder
   factory_bot
