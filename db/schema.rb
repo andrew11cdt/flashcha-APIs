@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_092026) do
+ActiveRecord::Schema.define(version: 2020_01_04_052343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_12_22_092026) do
     t.bigint "language_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "ex_meaning"
     t.index ["flash_card_id"], name: "index_card_translations_on_flash_card_id"
     t.index ["language_id"], name: "index_card_translations_on_language_id"
   end
