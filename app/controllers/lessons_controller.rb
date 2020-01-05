@@ -1,6 +1,11 @@
 class LessonsController < ApplicationController
     def index
         @lessons = Lesson.all
+        render json: @lessons, status: 200
+    end
+    def show
+        @lesson = Lesson.find(params[:id])
+        render json: @lesson, status: 200
     end
     def create
         @lesson = Lesson.new(lesson_params)
@@ -9,7 +14,7 @@ class LessonsController < ApplicationController
     def update
         @lesson = Lesson.find(params[:id])
         @lesson.update(lesson_params)
-    render json: @lessons, status: 200
+        render json: @lessons, status: 200
     end
     def destroy
         @lesson = Lesson.find(params[:id])

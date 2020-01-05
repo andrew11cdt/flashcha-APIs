@@ -1,6 +1,15 @@
 class CoursesController < ApplicationController
   def index
     @courses = Course.all
+    render json: @courses, status: 200
+  end
+  def show
+    @course = Course.find(params[:id])
+    render json: @course, status: 200
+  end
+  def show_lesson
+    @lessons = Lesson.where(course_id: params[:id])
+    render json: @lessons, status: 200
   end
   def create
     @course = Course.new(course_params)

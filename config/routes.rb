@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  resources :levels
-  resources :courses
+  resources :courses do
+    resources :lessons do
+      resources :flash_cards
+    end
+  end
 end

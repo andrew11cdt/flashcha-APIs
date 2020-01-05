@@ -1,6 +1,7 @@
 class FlashCardsController < ApplicationController
     def index
         @flashcards = FlashCard.all
+        render json: @flashcards, status: 200
     end
     def create
         @flashcard = FlashCard.new(flashcard_params)
@@ -9,7 +10,7 @@ class FlashCardsController < ApplicationController
     def update
         @flashcard = FlashCard.find(params[:id])
         @flashcard.update(flashcard_params)
-    render json: @flashcards, status: 200
+        render json: @flashcards, status: 200
     end
     def destroy
         @flashcard = FlashCard.find(params[:id])
