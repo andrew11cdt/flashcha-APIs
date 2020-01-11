@@ -1,6 +1,7 @@
-class LanguaguesController < ApplicationController
+class LanguagesController < ApplicationController
     def index
         @languages = Language.all
+        render json: @languages, status: 200
     end
     def create
         @language = Language.new(language_params)
