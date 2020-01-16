@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  get 'import' => 'flash_cards#import'
   resources :courses
   resources :lessons
-  # get 'lessons/:dung' => 'lessons#show'
   resources :flash_cards
+  resources :card_translations
   resources :levels
   resources :languages
 end
