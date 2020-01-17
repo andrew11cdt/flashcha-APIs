@@ -1,8 +1,8 @@
 class FlashCardsController < ApplicationController
     def index
         flashcards = FlashCard.all
-        # render_paging_json flashcards
-        render json: flashcards
+        render_paging_json flashcards
+        # render json: flashcards
     end
     def show
         @flashcard = FlashCard.find(params[:id])

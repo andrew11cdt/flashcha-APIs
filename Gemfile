@@ -19,6 +19,7 @@ group :development do
   gem 'rack-cors', :require => 'rack/cors'
   gem "roo", "~> 2.8.0"
   gem 'activerecord-import', '~> 1.0.4'
+  gem 'kaminari'
 end
 
 group :test do
