@@ -8,6 +8,12 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 4.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'capistrano',         require: false
+gem 'capistrano-rbenv',   require: false
+gem 'capistrano-rails',   require: false
+gem 'capistrano-bundler', require: false
+gem 'capistrano3-puma',   require: false
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'awesome_print'
@@ -20,13 +26,6 @@ group :development do
   gem "roo", "~> 2.8.0"
   gem 'activerecord-import', '~> 1.0.4'
   gem 'kaminari'
-
-  gem 'capistrano',         require: false
-  gem 'capistrano-rbenv',   require: false
-  gem 'capistrano-rails',   require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma',   require: false
-
 end
 
 group :test do
