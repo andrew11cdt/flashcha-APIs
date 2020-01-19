@@ -28,10 +28,9 @@ test:
   database: flashcha_test
 
 production:
-  <<: *default
-  host: localhost
+  adapter: postgresql
   encoding: utf8
-  database: jun
   pool: 5
+  database: jun
   username: jun
-  password: jun0!@!
+  password: jun

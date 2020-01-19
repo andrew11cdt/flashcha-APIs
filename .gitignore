@@ -23,3 +23,16 @@
 /config/master.key
 
 /config/credentials/production.key
+
+
+# Other
+config/database.yml
+public/*
+.env
+coverage/
+.rspec
+
+config/settings.local.yml
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

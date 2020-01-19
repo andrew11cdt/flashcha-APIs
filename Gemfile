@@ -5,14 +5,15 @@ ruby '2.6.0'
 
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 4.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'capistrano',         require: false
-gem 'capistrano-rbenv',   require: false
-gem 'capistrano-rails',   require: false
-gem 'capistrano-bundler', require: false
-gem 'capistrano3-puma',   require: false
+# gem 'puma', '~> 4.1'
+
+gem "capistrano"
+gem "capistrano3-puma"
+gem "capistrano-rails", require: false
+gem "capistrano-bundler", require: false
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

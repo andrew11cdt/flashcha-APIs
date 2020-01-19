@@ -7,9 +7,11 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-# server '178.128.86.218', user: 'jun', roles: %w{app db web}
-role :app, "178.128.86.218"
-
+set :stage, :production
+set :rails_env, :production
+set :deploy_to, "/deploy/apps/flashcha"
+set :branch, :config_deploy
+server "68.183.182.232", user: "jun", roles: %w(web app db)
 
 # role-based syntax
 # ==================
