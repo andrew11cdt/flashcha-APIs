@@ -16,7 +16,7 @@
 #
 default: &default
   adapter: postgresql
-  # encoding: unicode
+  encoding: unicode
   # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
@@ -29,9 +29,9 @@ test:
 
 production:
   <<: *default
-   host: localhost
-  encoding: utf8
+  # host: localhost
+  # encoding: utf8
   database: flashcha_production
   pool: 5
-  username: <%= ENV['FLASHCHA_DATABASE_USER'] %>
-  password: <%= ENV['FLASHCHA_DATABASE_PASSWORD'] %>
+  username: jun
+  password: jun0!@!

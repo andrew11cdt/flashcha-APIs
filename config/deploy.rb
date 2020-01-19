@@ -8,7 +8,7 @@ set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
 # set :rbenv_type, :user
-# set :rbenv_ruby, "2.6.0"
+set :rbenv_ruby, "2.6.0"
 
 # Don't change these unless you know what you're doing
 set :pty,             true
@@ -34,7 +34,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
-set :linked_files, %w{config/database.yml config.master.key}
+set :linked_files, %w{config/database.yml}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :puma do
