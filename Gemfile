@@ -15,6 +15,12 @@ gem "capistrano-rails", require: false
 gem "capistrano-bundler", require: false
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 
+gem 'spring-watcher-listen', '~> 2.0.0'
+gem 'rack-cors', :require => 'rack/cors'
+gem "roo", "~> 2.8.0"
+gem 'activerecord-import', '~> 1.0.4'
+gem 'kaminari'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'awesome_print'
@@ -22,11 +28,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rack-cors', :require => 'rack/cors'
-  gem "roo", "~> 2.8.0"
-  gem 'activerecord-import', '~> 1.0.4'
-  gem 'kaminari'
 end
 
 group :test do

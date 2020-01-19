@@ -9,9 +9,11 @@
 
 set :stage, :production
 set :rails_env, :production
-set :deploy_to, "/deploy/apps/flashcha"
-set :branch, :config_deploy
+set :deploy_to, "/home/jun/deploy/apps/flashcha"
+# set :branch, :config_deploy
 server "68.183.182.232", user: "jun", roles: %w(web app db)
+# role :app, "68.183.182.232"
+
 
 # role-based syntax
 # ==================
