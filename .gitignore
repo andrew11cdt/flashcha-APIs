@@ -19,10 +19,9 @@
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/config
 /config/master.key
 
-/config/credentials/production.key
+# /config/credentials/production.key
 
 
 # Other
@@ -31,8 +30,3 @@ public/*
 .env
 coverage/
 .rspec
-
-config/settings.local.yml
-config/settings.local.yml
-config/settings/*.local.yml
-config/environments/*.local.yml
