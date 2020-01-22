@@ -9,11 +9,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'puma', '~> 4.1'
 
-gem "capistrano"
-gem "capistrano3-puma"
-gem "capistrano-rails", require: false
-gem "capistrano-bundler", require: false
-gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 
 gem 'spring-watcher-listen', '~> 2.0.0'
 gem 'rack-cors', :require => 'rack/cors'
@@ -28,6 +23,11 @@ group :development, :test do
 end
 
 group :development do
+  gem "capistrano"
+  gem "capistrano3-puma"
+  gem "capistrano-rails", require: false
+  gem "capistrano-bundler", require: false
+  gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 end
 
 group :test do
