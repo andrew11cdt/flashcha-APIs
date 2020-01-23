@@ -5,6 +5,7 @@ lock "~> 3.11.2"
 
 set :application, "flashcha"
 set :repo_url, "git@github.com:anhdung11cdt2/flashcha.git"
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :pty, true
 set :linked_files, %w(config/database.yml config/application.yml)
 set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads)
