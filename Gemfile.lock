@@ -250,7 +250,7 @@ DEPENDENCIES
   database_rewinder
   factory_bot
   kaminari
-  pg (>= 0.18, < 2.0)
+  pg
   pry-rails
   puma (~> 4.1)
   rack-cors
