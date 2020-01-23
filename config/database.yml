@@ -31,6 +31,6 @@ production:
   adapter: postgresql
   encoding: utf8
   pool: 5
-  database: jun
-  username: jun
-  password: jun
+  database: son
+  username: son
+  password: son

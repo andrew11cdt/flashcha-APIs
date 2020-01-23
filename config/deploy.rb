@@ -9,7 +9,6 @@ set :pty, true
 set :linked_files, %w(config/database.yml config/application.yml)
 set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads)
 set :keep_releases, 5
-set :rbenv_type, :user
 
 set :puma_rackup, -> {File.join(current_path, "config.ru")}
 set :puma_state, -> {"#{shared_path}/tmp/pids/puma.state"}
