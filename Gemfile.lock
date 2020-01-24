@@ -71,7 +71,7 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     ast (2.4.0)
     awesome_print (1.8.0)
-    bootsnap (1.4.1)
+    bootsnap (1.4.5)
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.0.1)
@@ -82,12 +82,6 @@ GEM
       sshkit (>= 1.9.0)
     capistrano-bundler (1.6.0)
       capistrano (~> 3.1)
-    capistrano-rails (1.4.0)
-      capistrano (~> 3.1)
-      capistrano-bundler (~> 1.1)
-    capistrano-rvm (0.1.2)
-      capistrano (~> 3.0)
-      sshkit (~> 1.2)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
@@ -244,19 +238,17 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import (~> 1.0.4)
   awesome_print
-  bootsnap (>= 1.1.0)
+  bootsnap (>= 1.4.2)
   byebug
   capistrano
-  capistrano-bundler
-  capistrano-rails
-  capistrano-rvm
   capistrano3-puma!
   database_cleaner
   database_rewinder
   factory_bot
   kaminari
-  pg
+  pg (>= 0.18, < 2.0)
   pry-rails
+  puma (~> 4.1)
   rack-cors
   rails (~> 6.0.2, >= 6.0.2.1)
   roo (~> 2.8.0)
