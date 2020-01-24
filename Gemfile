@@ -4,16 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.0'
 
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
-gem 'pg' 
+gem 'pg'
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'puma', '~> 4.1'
-
-gem "capistrano"
-gem "capistrano3-puma"
-gem "capistrano-rails", require: false
-gem "capistrano-bundler", require: false
-gem 'capistrano-rvm'
+# gem 'puma', '~> 4.1'
 
 gem 'spring-watcher-listen', '~> 2.0.0'
 gem 'rack-cors', :require => 'rack/cors'
@@ -25,6 +19,15 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'awesome_print'
   gem 'pry-rails'
+end
+
+group :development do
+  gem "capistrano"
+  gem "capistrano3-puma", github: "seuros/capistrano-puma"
+  # gem "capistrano-rails", require: false
+  # gem "capistrano-bundler", require: false
+  # gem 'capistrano-rvm'
+  # gem 'capistrano-rbenv'
 end
 
 
