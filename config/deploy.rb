@@ -9,7 +9,7 @@ set :repo_url, "git@github.com:anhdung11cdt2/flashcha.git"
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
-set :deploy_to, "flashcha"
+# set :deploy_to, "flashcha"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
