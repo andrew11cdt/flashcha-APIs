@@ -26,7 +26,7 @@ class LevelsController < ApplicationController
       binding.pry
       # security strong params, is_banned: true
       # account endpoint API update info acount. name:(params{:account,is_banned: faulse})
-     params.require(:level).permit(:name, :level, :parent_lvl_id, :difficulty)
+     params.permit(:name, :lvl_no, :parent_lvl_id, :difficulty)
     end
     # params: { name: asda, level: asdasd }
 end
