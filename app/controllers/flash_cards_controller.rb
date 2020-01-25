@@ -34,7 +34,6 @@ class FlashCardsController < ApplicationController
             card = {word: sheet2.row(i)[word_index], hiragana: sheet2.row(i)[hira_index], lesson_id: params[:lesson_id]}
             flashcard = FlashCard.create(card)
             card_meaning = {meaning: sheet2.row(i)[meaning_index], language_id: params[:language_id], flash_card_id: flashcard.id}
-            # binding.pry
             card_translation = CardTranslation.create(card_meaning)
             # @flashcard.new()
         end
