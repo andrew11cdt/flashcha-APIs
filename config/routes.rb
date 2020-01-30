@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'import' => 'flash_cards#import'
+  post 'import/read' => 'importer#import_file'
+  post 'import/create' => 'importer#create_file'
   resources :courses
   resources :lessons
   resources :flash_cards
@@ -10,3 +11,4 @@ end
 
 # localhost:3000/lessons?course_id=3
 #localhost:3000/lessons
+# get 'import' => 'importer#import'

@@ -1,7 +1,7 @@
 class CardTranslationsController < ApplicationController
   def index
-      @card_trs = CardTranslation.all
-      render json: @card_trs, status: 200
+      card_trs = CardTranslation.all
+      render_paging_json(card_trs, params[:page], params[:per])
   end
   def show
     @card_tr = CardTranslation.find(params[:id])
