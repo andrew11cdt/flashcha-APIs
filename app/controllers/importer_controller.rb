@@ -13,9 +13,9 @@ class ImporterController < ApplicationController
     #     render json: sheets
     # end
     def create_file
-        if (params[:lesson_id] && params[:lvl_no] && params[:data] && params[:headers])
-            level_id = Level.where(lvl_no: params[:lvl_no]).to_a.first.id
+        if (params[:lesson_id] && params[:data] && params[:headers])
             createWord(params[:headers], params[:data], params[:lesson_id])
+            else raise "Missing params"
         end
         # if params[:sheet] && params[:page] && params[:per]
         #     course = {}
@@ -34,10 +34,10 @@ class ImporterController < ApplicationController
     def createWord(headers, data, lesson_id)
         if (headers.include?('word') && headers.include?('meaning_vi'))
             data.each_with_index do |e,i|
-                w = e[headers.index['word']]
-                hira = e[headers.index['hiragana']] || null
-                binding.pry
-                if w FlashCard.create(lesson_id: lesson_id, word: w, hiragana: hira)
+                w = e[headers.index('word')]
+                hira = e[headers.index('hiragana')] || null
+                if w.present? 
+                    FlashCard.create(lesson_id: lesson_id, word: w, hiragana: hira)
                 else render json: { error: 'Missing value at row: ' + i}, status: 'Invalid value'
                 end
             end
