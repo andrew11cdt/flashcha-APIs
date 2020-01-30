@@ -22,9 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ... -->
-## Execels headers:
+## Excels headers:
 
-## vocabulary: 
+## Type 1: vocabulary
 ### flash_card
     - word       
     - Hiragana   
@@ -40,7 +40,7 @@ Things you may want to cover:
     - language_id
     - flash_card_id
 
-## grammar:
+## Type 2: grammar
 
 ### flash_card
     - grammar       | ~ word
