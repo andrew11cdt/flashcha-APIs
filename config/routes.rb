@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  post 'import/read' => 'importer#import_file'
-  post 'import/create' => 'importer#create_file'
+  # post 'import/read' => 'importer#import_file'
+  post 'import' => 'importer#create_file'
   resources :courses
   resources :lessons
   resources :flash_cards
