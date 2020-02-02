@@ -69,33 +69,41 @@ class MigrateToUuid < ActiveRecord::Migration[6.0]
     add_index :card_translations, :flash_card_id
     add_index :card_translations, :language_id
 
-    # Add foreign keys
-    # add_foreign_key :courses, :levels
-    # add_foreign_key :courses, :languages
-
-    # add_foreign_key :lessons, :courses
-
-    # add_foreign_key :flash_cards, :lessons
-
-    # add_foreign_key :card_translations, :flash_cards
-    # add_foreign_key :card_translations, :languages
-
     # Migrate primary keys from UUIDs to IDs
     remove_column :courses,    :id
     remove_column :lessons,    :id
     remove_column :flash_cards,    :id
     remove_column :card_translations,    :id
+
+    remove_column :levels,    :id
+    remove_column :languages,    :id
+
+    rename_column :levels, :uuid,    :id
+    rename_column :languages, :uuid,    :id
     
     rename_column :courses, :uuid, :id
     rename_column :lessons, :uuid, :id
     rename_column :flash_cards, :uuid, :id
     rename_column :card_translations, :uuid, :id
     
+    execute "ALTER TABLE levels            ADD PRIMARY KEY (id);"
+    execute "ALTER TABLE languages            ADD PRIMARY KEY (id);"
     execute "ALTER TABLE courses            ADD PRIMARY KEY (id);"
     execute "ALTER TABLE lessons            ADD PRIMARY KEY (id);"
     execute "ALTER TABLE flash_cards        ADD PRIMARY KEY (id);"
     execute "ALTER TABLE card_translations  ADD PRIMARY KEY (id);"
     
+    # Add foreign keys
+    add_foreign_key :courses, :levels
+    add_foreign_key :courses, :languages
+
+    add_foreign_key :lessons, :courses
+
+    add_foreign_key :flash_cards, :lessons
+
+    add_foreign_key :card_translations, :flash_cards
+    add_foreign_key :card_translations, :languages
+
     # Add indexes for ordering by date
     add_index :courses,    :created_at
     add_index :lessons,    :created_at

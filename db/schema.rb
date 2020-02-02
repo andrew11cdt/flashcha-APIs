@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_01_110926) do
+ActiveRecord::Schema.define(version: 2020_02_01_101837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -51,11 +51,6 @@ ActiveRecord::Schema.define(version: 2020_02_01_110926) do
     t.uuid "lesson_id"
     t.index ["created_at"], name: "index_flash_cards_on_created_at"
     t.index ["lesson_id"], name: "index_flash_cards_on_lesson_id"
-  end
-
-  create_table "imports", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "languages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
