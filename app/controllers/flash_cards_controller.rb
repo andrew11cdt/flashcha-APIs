@@ -7,12 +7,12 @@ class FlashCardsController < ApplicationController
         @flashcard = FlashCard.find(params[:id])
     end
     def create
-        flashcard = FlashCard.new(create_params)
+        flashcard = FlashCard.new(flashcard_params)
         flashcard.save!
     end
     def update
         @flashcard = FlashCard.find(params[:id])
-        @flashcard.update(update_params)       
+        @flashcard.update(flashcard_params)       
         render json: @flashcard, status: 200
     end
     def destroy
@@ -20,12 +20,14 @@ class FlashCardsController < ApplicationController
         @flashcard.destroy
         render json: @flashcards, status: 200
     end
+    # def destroy_all
+    #     FlashCard.all.each do |f|
+    #         f.destroy
+    #     end
+    #     render json: FlashCard.all, status: 200
+    # end
     private
-    def update_params
-        params.require(:flashcard).permit(:id, :word, :hiragana,:lesson_id, :sino, :ipa, :example)
-    end
-    def create_params
-        params.require(:flashcard).require(:lesson_id, :word)
+    def flashcard_params
         params.require(:flashcard).permit(:id, :word, :hiragana,:lesson_id, :sino, :ipa, :example)
     end
 end

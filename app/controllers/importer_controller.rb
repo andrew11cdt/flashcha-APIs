@@ -13,8 +13,8 @@ class ImporterController < ApplicationController
     #     render json: sheets
     # end
     def create_file
-        if (params[:lesson_id] && params[:data] && params[:headers])
-            createWord(params[:headers], params[:data], params[:lesson_id])
+        if (params[:lesson_id] && params[:headers] && params[:data])
+            createWord(params[:lesson_id], params[:headers], params[:data])
             else raise "Missing params"
         end
         # if params[:sheet] && params[:page] && params[:per]
@@ -31,7 +31,7 @@ class ImporterController < ApplicationController
     # importData((2..271), sheet2)
     # end
     private
-    def createWord(headers, data, lesson_id)
+    def createWord(lesson_id, headers, data)
         if (headers.include?('word') && headers.include?('meaning_vi'))
             data.each_with_index do |e,i|
                 w = e[headers.index('word')]

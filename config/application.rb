@@ -41,5 +41,9 @@ module Flashcha
         resource '*', :headers => :any, :methods => [:get, :post, :patch, :delete, :options]
       end
     end
+    # ? change the primary default type for uuid
+    config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
+    end
   end
 end

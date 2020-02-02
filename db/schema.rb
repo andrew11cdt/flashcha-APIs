@@ -10,35 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_09_155514) do
+ActiveRecord::Schema.define(version: 2020_02_01_110926) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "card_translations", force: :cascade do |t|
-    t.bigint "flash_card_id"
+  create_table "card_translations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.text "meaning"
     t.string "sino_vi"
-    t.bigint "language_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ex_meaning"
+    t.uuid "flash_card_id"
+    t.uuid "language_id"
+    t.index ["created_at"], name: "index_card_translations_on_created_at"
     t.index ["flash_card_id"], name: "index_card_translations_on_flash_card_id"
     t.index ["language_id"], name: "index_card_translations_on_language_id"
   end
 
-  create_table "courses", force: :cascade do |t|
+  create_table "courses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
-    t.bigint "level_id"
-    t.bigint "language_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "level_id"
+    t.uuid "language_id"
+    t.index ["created_at"], name: "index_courses_on_created_at"
     t.index ["language_id"], name: "index_courses_on_language_id"
     t.index ["level_id"], name: "index_courses_on_level_id"
   end
 
-  create_table "flash_cards", force: :cascade do |t|
-    t.bigint "lesson_id"
+  create_table "flash_cards", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "word"
     t.string "hiragana"
     t.string "sino"
@@ -46,32 +48,45 @@ ActiveRecord::Schema.define(version: 2020_01_09_155514) do
     t.text "example"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "lesson_id"
+    t.index ["created_at"], name: "index_flash_cards_on_created_at"
     t.index ["lesson_id"], name: "index_flash_cards_on_lesson_id"
   end
 
-  create_table "languages", force: :cascade do |t|
+  create_table "imports", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "languages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "lang_code", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "lessons", force: :cascade do |t|
+  create_table "lessons", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
-    t.bigint "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "course_id"
     t.index ["course_id"], name: "index_lessons_on_course_id"
+    t.index ["created_at"], name: "index_lessons_on_created_at"
   end
 
-  create_table "levels", force: :cascade do |t|
+  create_table "levels", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
-    t.bigint "parent_lvl_id"
     t.integer "difficulty"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "lvl_no", default: 1
-    t.index ["parent_lvl_id"], name: "index_levels_on_parent_lvl_id"
+    t.uuid "parent_lvl_id"
   end
 
+  add_foreign_key "card_translations", "flash_cards"
+  add_foreign_key "card_translations", "languages"
+  add_foreign_key "courses", "languages"
+  add_foreign_key "courses", "levels"
+  add_foreign_key "flash_cards", "lessons"
+  add_foreign_key "lessons", "courses"
 end
