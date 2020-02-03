@@ -1,8 +1,8 @@
 class CardTranslationsController < ApplicationController
   def index
-      if params[:flashcards_id]
+      if params[:flashcard_ids]
         card_trs = CardTranslation.all
-        ids = params[:flashcards_id]
+        ids = params[:flashcard_ids]
         # card_trs = card_trs.where(flash_card_id: ids)
         result = {}
         ids.each do |id|

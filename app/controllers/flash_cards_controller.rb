@@ -1,11 +1,14 @@
 class FlashCardsController < ApplicationController
     def index
-        flashcards = FlashCard.all
-        if (params[:lesson_id]) 
-            flashcards = flashcards.where(lesson_id: params[:lesson_id])
+        if params[:lesson_ids]
+            flashcards = FlashCard.all
+            result = {}
+            params[:lesson_ids].each do |id|
+                result[id]=flashcards.where(lesson_id: id)
+            end
             # render_paging_json(flashcards, params[:page], params[:per])
-            render json: flashcards, status: 200
-            else raise "Missing lesson_id"
+            render json: result, status: 200
+            else raise "Missing lesson_ids"
         end
     end
     def show

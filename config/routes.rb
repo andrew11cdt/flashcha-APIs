@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post 'import' => 'importer#create_file'
   resources :courses
   resources :lessons
+  post 'flash_cards/index' => "flash_cards#index"
   resources :flash_cards
   post 'card_translations/index' => "card_translations#index"
   resources :card_translations
