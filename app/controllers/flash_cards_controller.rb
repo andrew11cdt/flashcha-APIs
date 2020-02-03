@@ -1,7 +1,12 @@
 class FlashCardsController < ApplicationController
     def index
         flashcards = FlashCard.all
-        render_paging_json(flashcards, params[:page], params[:per])
+        if (params[:lesson_id]) 
+            flashcards = flashcards.where(lesson_id: params[:lesson_id])
+            # render_paging_json(flashcards, params[:page], params[:per])
+            render json: flashcards, status: 200
+            else raise "Missing lesson_id"
+        end
     end
     def show
         @flashcard = FlashCard.find(params[:id])
@@ -28,7 +33,7 @@ class FlashCardsController < ApplicationController
     # end
     private
     def flashcard_params
-        params.require(:flashcard).permit(:id, :word, :hiragana,:lesson_id, :sino, :ipa, :example)
+        params.permit(:id, :word, :hiragana,:lesson_id, :sino, :ipa, :example)
     end
 end
  

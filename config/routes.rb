@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :courses
   resources :lessons
   resources :flash_cards
+  post 'card_translations/index' => "card_translations#index"
   resources :card_translations
   resources :levels
   resources :languages

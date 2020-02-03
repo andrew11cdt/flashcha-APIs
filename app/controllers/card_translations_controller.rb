@@ -1,7 +1,17 @@
 class CardTranslationsController < ApplicationController
   def index
-      card_trs = CardTranslation.all
-      render_paging_json(card_trs, params[:page], params[:per])
+      if params[:flashcards_id]
+        card_trs = CardTranslation.all
+        ids = params[:flashcards_id]
+        # card_trs = card_trs.where(flash_card_id: ids)
+        result = {}
+        ids.each do |id|
+          result[id] = card_trs.where(flash_card_id: id)
+        end
+        # render_paging_json(card_trs, params[:page], params[:per])
+        render json: result, status: 200
+        else raise "Missing flashcards_id"
+      end
   end
   def show
     @card_tr = CardTranslation.find(params[:id])
