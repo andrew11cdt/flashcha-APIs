@@ -12,9 +12,10 @@ class CoursesController < ApplicationController
     render json: @lessons, status: 200
   end
   def create
-    @course = Course.new(course_params)
+    course = Course.new(course_params)
     raise InvalidParams unless course_params[:language_id]
-    @course.save
+    course.save
+    render json: @courses, staus: 200
   end
   def update
     @course = Course.find(params[:id])
