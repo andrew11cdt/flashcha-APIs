@@ -14,12 +14,12 @@ class LevelsController < ApplicationController
   def update
     @lvl = Level.find(params[:id])
     @lvl.update(lvl_params)
-    render json: @lvls, status: 200
+    render json: Level.all, status: 200
   end
   def destroy
     @lvl = Level.find(params[:id])
     @lvl.destroy!
-    render json: @lvls, status: 200
+    render json: Level.all, status: 200
   end
   private
     def lvl_params

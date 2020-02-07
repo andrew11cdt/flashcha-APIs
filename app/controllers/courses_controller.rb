@@ -15,17 +15,18 @@ class CoursesController < ApplicationController
     course = Course.new(course_params)
     raise InvalidParams unless course_params[:language_id]
     course.save
-    render json: @courses, staus: 200
+    render json: Course.all, staus: 200
   end
   def update
     @course = Course.find(params[:id])
     @course.update(course_params)
-    render json: @courses, status: 200
+    render json: Course.all, status: 200
   end
   def destroy
+    # if has lesson and flashcard with foreign_keys -> may delete them before delete course
     @course = Course.find(params[:id])
     @course.destroy
-    render json: @courses, status: 200
+    render json: Course.all, status: 200
   end
   private
     def course_params

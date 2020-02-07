@@ -26,7 +26,7 @@ class FlashCardsController < ApplicationController
     def destroy
         @flashcard = FlashCard.find(params[:id])
         @flashcard.destroy
-        render json: @flashcards, status: 200
+        render json: 'destroyed', status: 200
     end
     # def destroy_all
     #     FlashCard.all.each do |f|
