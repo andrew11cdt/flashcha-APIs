@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   resources :courses
   resources :lessons
   post 'flash_cards/index' => "flash_cards#index"
+  post 'flash_cards/array_create' => "flash_cards#array_create"
   resources :flash_cards
   post 'card_translations/index' => "card_translations#index"
+  post 'card_translations/array_create' => "card_translations#array_create"
   resources :card_translations
   resources :levels
   resources :languages

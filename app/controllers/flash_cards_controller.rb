@@ -14,6 +14,21 @@ class FlashCardsController < ApplicationController
     def show
         @flashcard = FlashCard.find(params[:id])
     end
+    def array_create
+        result = {}
+        result[params[:lesson_id]] = []
+        if params[:flash_cards]
+            params[:flash_cards].each_with_index do |flashcard,i|
+                f = FlashCard.create(flashcards_array_params[:flash_cards][i].merge!(lesson_id: params[:lesson_id]))
+                result[params[:lesson_id]].push(f)
+            end
+        else raise 'Missing params flashcards'
+        end
+        if result[params[:lesson_id]].length > 0 
+            render json: result
+        else raise 'Could not create'
+        end
+    end
     def create
         flashcard = FlashCard.new(flashcard_params)
         flashcard.save!
@@ -36,7 +51,10 @@ class FlashCardsController < ApplicationController
     # end
     private
     def flashcard_params
-        params.permit(:id, :word, :hiragana,:lesson_id, :sino, :ipa, :example)
+        params.require(:flash_card).permit(:word, :hiragana,:lesson_id, :sino, :ipa, :example)
+    end
+    def flashcards_array_params
+        params.require(:lesson_id)
+        params.permit({flash_cards: [:word, :hiragana, :lesson_id, :sino, :ipa, :example]}, :lesson_id)
     end
 end
- 
