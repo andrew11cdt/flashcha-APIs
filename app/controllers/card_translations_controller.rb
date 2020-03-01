@@ -53,6 +53,6 @@ class CardTranslationsController < ApplicationController
     end
     def arr_card_tr_params
         params.require(:language_id)
-        params.permit({card_translates: [:flash_card_id, :language_id, :meaning, :sino_vi, :ex_meaning]}, :language_id, :card_translate)
+        params.permit({card_translates: [:flash_card_id, :language_id, :meaning, :sino_vi, :ex_meaning]}, :language_id)
     end
 end
