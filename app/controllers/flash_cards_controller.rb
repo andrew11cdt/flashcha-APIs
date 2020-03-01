@@ -51,7 +51,7 @@ class FlashCardsController < ApplicationController
     # end
     private
     def flashcard_params
-        params.require(:flash_card).permit(:word, :hiragana,:lesson_id, :sino, :ipa, :example)
+        params.permit(:word, :hiragana,:lesson_id, :sino, :ipa, :example)
     end
     def flashcards_array_params
         params.require(:lesson_id)
