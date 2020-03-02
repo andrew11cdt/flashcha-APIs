@@ -21,17 +21,15 @@ class CardTranslationsController < ApplicationController
     if params[:card_translates].length > 0
         params[:card_translates].each_with_index do |card_tr, i|
           # todo: create unless flash_card_id and language_id params is existed
-          p = arr_card_tr_params[:card_translates][i].merge!({language_id: params[:language_id]})
+          p = arr_card_tr_params[:card_translates][i]
+          p['language_id'] = params[:language_id]
           existCardTr = CardTranslation.find_by({flash_card_id: p['flash_card_id'], language_id: p['language_id']})
-            f = CardTranslation.create(p) unless existCardTr
-            results.push(f) unless f
+          f = CardTranslation.create(p) unless existCardTr
+          results.push(f) #unless f
         end
-    else raise 'Missing params flashcards'
+    else raise 'Missing params card_translates'
     end
-    if results.length > 0 && !!results[0]
-        render json: results
-    else raise 'Could not create'
-    end
+    render json: results
   end
   def create
     @card_tr = CardTranslation.new(card_tr_params)
@@ -53,6 +51,6 @@ class CardTranslationsController < ApplicationController
     end
     def arr_card_tr_params
         params.require(:language_id)
-        params.permit({card_translates: [:flash_card_id, :language_id, :meaning, :sino_vi, :ex_meaning]}, :language_id)
+        params.permit({card_translates: [:flash_card_id, :language_id, :meaning, :sino_vi, :ex_meaning]}, :language_id, {card_translation: :language_id})
     end
 end
