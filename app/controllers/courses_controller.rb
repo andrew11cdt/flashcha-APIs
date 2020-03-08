@@ -23,9 +23,12 @@ class CoursesController < ApplicationController
     render json: Course.all, status: 200
   end
   def destroy
-    # if has lesson and flashcard with foreign_keys -> may delete them before delete course
-    @course = Course.find(params[:id])
-    @course.destroy
+    course = Course.find(params[:id])
+    lessons = Lesson.where(course_id: course.id)
+    lessons.each do |l|
+      l.destroy
+    end
+    course.destroy
     render json: Course.all, status: 200
   end
   private

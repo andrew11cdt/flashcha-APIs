@@ -31,11 +31,11 @@ class LessonsController < ApplicationController
         flashcards.each do |f|
           card_trs = CardTranslation.where(flash_card_id: f.id)
           card_trs.each do |t|
-            t.destroy
+            t.destroy unless t
           end
-          f.destroy
+          f.destroy unless f
         end
-        lesson.destroy
+        lesson.destroy unless lesson
         render json: Lesson.all, status: 200
     end
 
