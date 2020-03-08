@@ -26,8 +26,16 @@ class LessonsController < ApplicationController
     end
 
     def destroy
-        @lesson = Lesson.find(params[:id])
-        @lesson.destroy
+        lesson = Lesson.find(params[:id])
+        flashcards = FlashCard.where(lesson_id: lesson.id)
+        flashcards.each do |f|
+          card_trs = CardTranslation.where(flash_card_id: f.id)
+          card_trs.each do |t|
+            t.destroy
+          end
+          f.destroy
+        end
+        lesson.destroy
         render json: Lesson.all, status: 200
     end
 
