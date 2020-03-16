@@ -27,16 +27,17 @@ class LessonsController < ApplicationController
 
     def destroy
         lesson = Lesson.find(params[:id])
+        course_id = lesson.course_id
         flashcards = FlashCard.where(lesson_id: lesson.id)
         flashcards.each do |f|
           card_trs = CardTranslation.where(flash_card_id: f.id)
           card_trs.each do |t|
-            t.destroy unless t
-          end
-          f.destroy unless f
+            t.destroy unless !t
+          end unless card_trs.empty?
+          f.destroy unless !f
         end
-        lesson.destroy unless lesson
-        render json: Lesson.all, status: 200
+        lesson.delete unless !lesson
+        render json: Lesson.where(course_id: course_id), status: 200
     end
 
     private

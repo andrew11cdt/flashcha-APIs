@@ -26,9 +26,9 @@ class CoursesController < ApplicationController
     course = Course.find(params[:id])
     lessons = Lesson.where(course_id: course.id)
     lessons.each do |l|
-      l.destroy
-    end
-    course.destroy
+      l.destroy unless !l
+    end unless lessons.empty?
+    course.destroy unless !course
     render json: Course.all, status: 200
   end
   private
