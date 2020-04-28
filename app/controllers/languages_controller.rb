@@ -5,8 +5,11 @@ class LanguagesController < ApplicationController
     end
     def create
         @language = Language.new(language_params)
-        @language.save
-        render json: Language.all, status: 200
+        if @language.save 
+            render json: Language.all, status: 200
+        else
+            render json: ["This language already exists!"], status: 409
+        end
     end
     def update
         @language = Language.find(params[:id])
