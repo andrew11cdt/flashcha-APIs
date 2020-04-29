@@ -8,7 +8,7 @@ class LanguagesController < ApplicationController
         if @language.save 
             render json: Language.all, status: 200
         else
-            render json: ["This language already exists!"], status: 409
+            render json: {error: 'This language already exists!'}, status: 422
         end
     end
     def update
