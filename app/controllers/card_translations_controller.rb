@@ -21,7 +21,9 @@ class CardTranslationsController < ApplicationController
           p = arr_card_tr_params[:card_translates][i]
           p['language_id'] = params[:language_id]
           existCardTr = CardTranslation.find_by({flash_card_id: p['flash_card_id'], language_id: p['language_id']})
+         `` # binding.pry
           f = CardTranslation.create(p) unless existCardTr
+          puts f
           results.push(f) #unless f
         end
     else raise 'Missing params card_translates'
