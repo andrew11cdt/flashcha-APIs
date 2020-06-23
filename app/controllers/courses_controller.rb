@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
   end
   def create
     course = Course.new(course_params)
-    raise InvalidParams unless course_params[:language_id]
+    raise InvalidParams unless course_params[:language_id] && course_params[:translate_language_id]
     course.save
     render json: Course.all, staus: 200
   end
@@ -33,6 +33,6 @@ class CoursesController < ApplicationController
   end
   private
     def course_params
-        params.require(:course).permit(:name, :level_id, :language_id)
+        params.require(:course).permit(:name, :level_id, :language_id, :translate_language_id)
     end
 end
