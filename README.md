@@ -22,8 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ... -->
-# Import data by Upload Excels
-## import to existed Lesson
+## Import data by Upload Excels
+### import to existed Lesson
 * POST http://{ip}/import?lesson_id=2&level_id=6&lang_code='ja'
     - Body: 
     {   "lesson_id": 2,
@@ -46,15 +46,15 @@ Things you may want to cover:
             ],
         ]
     }
-## Import to new Lesson with existed Course
+### Import to new Lesson with existed Course
 * Front_end: create new Lesson with course_id
-## Import to new Course & new Lesson
+### Import to new Course & new Lesson
 * Front_end: create new Course & new Lesson
 
-## Excels headers:
+### Excels headers:
 
-## Type 1: vocabulary
-### flash_card
+### Type 1: vocabulary
+#### flash_card
     - word       
     - Hiragana?   
     <!-- sino how to call -->
@@ -62,21 +62,21 @@ Things you may want to cover:
     <!-- example -->
     <!-- add: word_des -->
 
-### card_translations
+#### card_translations
     - meaning
     <!-- sino_vi -->
     <!-- ex_meaning -->
     - language_id
     - flash_card_id
 
-## Type 2: grammar
+### Type 2: grammar
 
-### flash_card
+#### flash_card
     - grammar       | ~ word
     - structure?     | ~ hiragana
     <!-- - example       | ~ example -->
 
-### card_translations
+#### card_translations
     - meaning
     <!-- explanation   | ~> *need*: des -->
     <!-- ex_meaning    | ~ ex_meaning -->
